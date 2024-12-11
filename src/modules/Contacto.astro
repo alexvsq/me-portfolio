@@ -1,0 +1,68 @@
+---
+import Subtitle from "../components/Subtitle.astro";
+const cardsContact = [
+  {
+    name: "Github",
+    text: "github.com/alexvsq",
+    url: "https://github.com/alexvsq",
+    icon: "/logos/github.png",
+  },
+  {
+    name: "Gmail",
+    text: "alejandro79861@gmail.com",
+    url: "mailto:alejandro79861@gmail.com",
+    icon: "/logos/gmail.png",
+  },
+  {
+    name: "Telegram",
+    text: "@alexvsq",
+    url: "https://t.me/alexvsq",
+    icon: "/logos/telegram.png",
+  },
+];
+---
+
+<section class="section-module" id="contacto">
+  <Subtitle title="Contacto" srcImg="/icons/contact.png" />
+  <div class="containerDynamic py-12">
+    <div
+      class="flex flex-col md:flex-row gap-10 md:gap-0 justify-around items-center"
+    >
+      <div>
+        <article class="text-2xl text-white font-bold">
+          <p>Jose Alejandro</p><p>Vasquez Lezama</p>
+        </article>
+      </div>
+      <aside class="flex flex-col gap-3">
+        {
+          cardsContact.map((card) => (
+            <a href={card.url}>
+              <article class="flex flex-col gap-6 bg-colorBg2 rounded-2xl p-4">
+                <header class="flex justify-between items-center">
+                  <p class="text-Text2 text-xs">{card.name}</p>
+                  <aside class="bg-colorBg p-1 rounded-full w-8 h-8">
+                    <img
+                      class="w-full h-full object-contain"
+                      src={card.icon}
+                      alt={card.name}
+                    />
+                  </aside>
+                </header>
+                <footer class="flex justify-between items-center gap-8">
+                  <p class="text-white text-sm   font-semibold">{card.text}</p>
+                  <div class=" w-4 h-4">
+                    <img
+                      class="w-full h-full object-contain"
+                      src="/icons/open.png"
+                      alt="open"
+                    />
+                  </div>
+                </footer>
+              </article>
+            </a>
+          ))
+        }
+      </aside>
+    </div>
+  </div>
+</section>

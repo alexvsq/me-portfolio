@@ -1,0 +1,197 @@
+---
+const btnsNav = [
+  {
+    name: "Proyectos",
+    link: "#proyectos",
+  },
+  {
+    name: "Experiencias",
+    link: "#experiencias",
+  },
+  {
+    name: "Sobre mi",
+    link: "#sobre-mi",
+  },
+  {
+    name: "Contacto",
+    link: "#contacto",
+  },
+];
+---
+
+<div class="hidden md:fixed w-full md:flex justify-center py-2 z-20">
+  <div id="bg-nav" class="bgBlackBlur rounded-full absolute"></div>
+  <div
+    id="btn-bg"
+    class="fixed transition-all ease-in-out w-[var(--width)] h-[var(--height)] left-[var(--left)] top-[var(--top)] bg-colorBg2 rounded-full"
+  >
+  </div>
+  <nav id="nav-btns-container" class="p-1 rounded-full">
+    <div class="flex gap-3 text-white text-sm">
+      <p class="nav-btn rounded-full px-4 py-1 z-40">
+        <a href="#proyectos">Proyectos</a>
+      </p>
+      <p class="nav-btn rounded-full px-4 py-1 z-40">
+        <a href="#experiencias">Experiencias</a>
+      </p>
+      <p class="nav-btn rounded-full px-4 py-1 z-40">
+        <a href="#sobre-mi">Sobre mi</a>
+      </p>
+      <p class="nav-btn rounded-full px-4 py-1 z-40">
+        <a href="#contacto">Contacto</a>
+      </p>
+    </div>
+  </nav>
+</div>
+<div class="fixed md:hidden pt-4 w-full z-10">
+  <nav class="flex justify-between items-center containerDynamic">
+    <div id="btn-next-section" class="w-10 h-10 bgBlackBlur p-2 rounded-full">
+      <img
+        class="h-full w-full object-contain"
+        src="/icons/arrow.png"
+        alt="arrow"
+      />
+    </div>
+    <aside>
+      <div id="mobile-section-indicator" class="bgBlackBlur p-1 rounded-full">
+        <p class="bg-colorBg2 px-4 py-1 rounded-full text-sm text-primary"></p>
+      </div>
+    </aside>
+  </nav>
+</div>
+
+<script>
+  const btnsNav = [
+    {
+      name: "Home",
+      link: "home",
+    },
+    {
+      name: "Proyectos",
+      link: "proyectos",
+    },
+    {
+      name: "Experiencias",
+      link: "experiencias",
+    },
+    {
+      name: "Sobre mi",
+      link: "sobre-mi",
+    },
+    {
+      name: "Contacto",
+      link: "contacto",
+    },
+  ];
+  document.addEventListener("DOMContentLoaded", () => {
+    const navBtns = document.querySelectorAll(".nav-btn");
+    const btnBg = document.querySelector("#btn-bg") as HTMLElement;
+    const sections = document.querySelectorAll(".section-module");
+    const bgNav = document.querySelector("#bg-nav") as HTMLElement;
+    const navContainer = document.querySelector(
+      "#nav-btns-container"
+    ) as HTMLElement;
+    const mobileSectionIndicator = document.querySelector(
+      "#mobile-section-indicator"
+    ) as HTMLElement;
+
+    const optionsObserver = { threshold: 0.2 };
+
+    if (window.innerWidth < 768) {
+      optionsObserver.threshold = 0.1;
+    }
+
+    const updateNavBgSize = () => {
+      const navContainerSizes = navContainer.getBoundingClientRect();
+      bgNav.style.width = `${navContainerSizes.width}px`;
+      bgNav.style.height = `${navContainerSizes.height}px`;
+    };
+
+    updateNavBgSize();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navBtns.forEach((btnBtn) => {
+            const btnId = btnBtn
+              .querySelector("a")
+              ?.getAttribute("href")
+              ?.replace("#", "");
+
+            if (btnId == entry.target.id) {
+              const { left, top, width, height } =
+                btnBtn.getBoundingClientRect();
+
+              btnBg.style.setProperty("--left", `${left}px`);
+              btnBg.style.setProperty("--top", `${top}px`);
+              btnBg.style.setProperty("--width", `${width}px`);
+              btnBg.style.setProperty("--height", `${height}px`);
+
+              const objSectionCurrent = btnsNav.find(
+                (x) => x.link == entry.target.id
+              );
+              mobileSectionIndicator.getElementsByTagName("p")[0].innerText =
+                objSectionCurrent ? objSectionCurrent.name : "";
+
+              mobileSectionIndicator.classList.remove("element-inactive");
+
+              btnBtn.classList.add("text-active");
+
+              updateNavBgSize();
+            } else if (entry.target.id == "home") {
+              btnBg.style.setProperty("--left", `${0}px`);
+              btnBg.style.setProperty("--top", `${0}px`);
+              btnBg.style.setProperty("--width", `${0}px`);
+              btnBg.style.setProperty("--height", `${0}px`);
+
+              const objSectionCurrent = btnsNav.find(
+                (x) => x.link == entry.target.id
+              );
+
+              mobileSectionIndicator.getElementsByTagName("p")[0].innerText =
+                objSectionCurrent ? objSectionCurrent.name : "";
+
+              btnBtn.classList.remove("text-active");
+              mobileSectionIndicator.classList.add("element-inactive");
+            } else {
+              btnBtn.classList.remove("text-active");
+            }
+          });
+        }
+      });
+    }, optionsObserver);
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    const btnNextSection = document.querySelector(
+      "#btn-next-section"
+    ) as HTMLElement;
+
+    btnNextSection.addEventListener("click", () => {
+      const currentSection =
+        mobileSectionIndicator.getElementsByTagName("p")[0].innerText;
+
+      const currentSectionIndex = btnsNav.findIndex(
+        (x) => x.name === currentSection
+      );
+      const lastIndex = btnsNav.length - 1;
+
+      if (currentSectionIndex < lastIndex) {
+        window.location.href = "#" + btnsNav[currentSectionIndex + 1].link;
+      } else {
+        window.location.href = "#home";
+      }
+    });
+  });
+</script>
+
+<style>
+  .text-active {
+    color: #f1c900;
+  }
+  .element-inactive {
+    opacity: 0;
+  }
+</style>

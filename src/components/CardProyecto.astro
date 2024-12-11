@@ -1,0 +1,220 @@
+---
+import type { ProjectType } from "../../src/types/types";
+const { about, name, description, abilities, urls, media, tags, project } =
+  Astro.props;
+---
+
+<section
+  class="bg-colorBg2 p-2 flex flex-col gap-3 md:gap-0 rounded-2xl w-full mx-auto xl:mx-0 md:w-[600px] md:h-[321px] my-5 md:my-12 relative overflow-hidden"
+>
+  <header
+    class="flex flex-col gap-3 md:gap-0 md:flex-row-reverse h-full w-full"
+  >
+    <aside
+      class="bg-colorBg p-1 rounded-xl overflow-hidden h-full w-full md:w-[53%]"
+    >
+      <div class="rounded-lg overflow-hidden flex w-full h-full">
+        {
+          Array.isArray(media) && media.length === 1 ? (
+            media[0].type === "img" ? (
+              <img
+                class="w-full mx-auto h-full object-contain content-center"
+                src={media[0].src}
+                alt={media[0].type}
+              />
+            ) : (
+              <video
+                class="h-full w-full object-cover"
+                src={media[0].src}
+                autoplay
+                loop
+                muted
+                playsinline
+              >
+                Tu navegador no soporta el elemento video.
+              </video>
+            )
+          ) : (
+            Array.isArray(media) &&
+            media.map((item) => (
+              <div class=" h-full w-1/2 aspect-[9/16]">
+                {item.type === "img" ? (
+                  <img
+                    class="w-full h-full object-cover"
+                    src={item.src}
+                    alt={item.type}
+                  />
+                ) : (
+                  <video
+                    class="h-full w-full object-cover"
+                    src={item.src}
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                  >
+                    Tu navegador no soporta el elemento video.
+                  </video>
+                )}
+              </div>
+            ))
+          )
+        }
+      </div>
+    </aside>
+
+    <div class="w-full md:w-[47%] flex flex-col px-2 h-full">
+      <header class="flex items-center justify-between">
+        <p class="bg-colorBg text-white px-3 py-1 text-[10px] rounded-md">
+          {about}
+        </p>
+
+        <aside class="flex items-center gap-3">
+          {
+            urls?.map((item: any) => {
+              return (
+                <a href={item.url} target="_blank" rel="noreferrer">
+                  <div class="bg-colorBg rounded-full p-1 h-8 w-8">
+                    <img
+                      class="w-full"
+                      src={`/logos/${item.name}.png`}
+                      alt={item.name}
+                    />
+                  </div>
+                </a>
+              );
+            })
+          }
+          <div class="h-4 w-4">
+            <img class="w-full" src="/icons/open.png" alt="open" />
+          </div>
+        </aside>
+      </header>
+      <article class="flex flex-col justify-between h-full font-medium">
+        <header class="flex flex-col h-full gap-2 mt-1">
+          <h3 class="text-white text-xl font-semibold">{name}</h3>
+
+          <p class="text-white text-[13px]">
+            {description}
+          </p>
+
+          <ul
+            class="text-Text1 text-[13px] list-disc marker:text-primary list-inside"
+          >
+            {abilities?.map((abilities: string) => <li>{abilities}</li>)}
+          </ul>
+        </header>
+      </article>
+    </div>
+  </header>
+  <footer
+    class="md:absolute bottom-2 pl-1 flex flex-row gap-2 text-white text-xs font-normal items-center"
+  >
+    {
+      tags?.map((tag: string) => (
+        <div class="bgBlackBlur flex items-center px-2 py-1 rounded-lg gap-2">
+          <img
+            class="w-5 h-5 object-contain"
+            src={`/logos/${tag}.png`}
+            alt={tag}
+          />
+          <p class=" capitalize">{tag}</p>
+        </div>
+      ))
+    }
+  </footer>
+</section>
+<!-- 
+
+<section
+  class="bg-colorBg2 p-2 flex flex-col gap-3 md:gap-0 rounded-2xl w-full mx-auto xl:mx-0 md:w-[600px] md:h-[321px] my-5 md:my-12 relative"
+>
+  <header
+    class="flex flex-col gap-3 md:gap-0 md:flex-row-reverse h-full w-full"
+  >
+    <aside
+      class="bg-colorBg p-1 rounded-xl overflow-hidden h-full w-full md:w-[53%]"
+    >
+      <div class="rounded-lg overflow-hidden flex h-full">
+        <div class="w-1/2 h-full">
+          <img
+            class="w-full h-full object-cover content-center"
+            src="/projects/coinapp-img.png"
+            alt="project-coinapp"
+          />
+        </div>
+        <div class="w-1/2 h-full">
+          <video
+            class="h-full w-full object-cover"
+            src="/projects/coinapp-video.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+          >
+            Tu navegador no soporta el elemento video
+          </video>
+        </div>
+      </div>
+    </aside>
+
+    <div class="w-full md:w-[47%] flex flex-col px-2 h-full">
+      <header class="flex items-center justify-between">
+        <p class="bg-colorBg text-white px-3 py-1 text-[10px] rounded-md">
+          App Mobile
+        </p>
+
+        <aside class="flex items-center gap-3">
+          <div class="bg-colorBg rounded-full p-1 h-8 w-8">
+            <img class="w-full" src="/logos/github.png" alt="github" />
+          </div>
+
+          <div class="bg-colorBg rounded-full p-2 h-8 w-8">
+            <img class="w-full" src="/logos/playstore.png" alt="playstore" />
+          </div>
+          <div class="h-4 w-4">
+            <img class="w-full" src="/icons/open.png" alt="open" />
+          </div>
+        </aside>
+      </header>
+      <article class="flex flex-col justify-between h-full font-medium">
+        <header class="flex flex-col h-full gap-3 mt-1">
+          <h3 class="text-white text-xl font-semibold">CoinApp</h3>
+
+          <p class="text-white text-xs">
+            App que permite convertir precios con tasas en tiempo real. Es
+            multilenguaje, disponible en 11 idiomas y cuanta con más de 1k de
+            descargas.
+          </p>
+
+          <ul
+            class="text-Text1 text-xs list-disc marker:text-primary list-inside"
+          >
+            <li>Desarrollo Mobile multiplataforma</li>
+            <li>Consumo de APIs</li>
+            <li>Multiidiomas ( i18n )</li>
+            <li>Uso de almacenamiento local</li>
+            <li>Cuentas con más de 1.5k descargas</li>
+          </ul>
+        </header>
+      </article>
+    </div>
+  </header>
+  <footer
+    class="md:absolute bottom-2 pl-1 flex flex-row gap-2 text-white text-xs font-normal"
+  >
+    <div class="bgBlackBlur flex items-center px-2 py-1 rounded-lg gap-2">
+      <img class="w-5" src="/logos/expo.png" alt="expo" />
+      <p>Expo</p>
+    </div>
+    <div class="bgBlackBlur flex gap-2 items-center px-2 py-1 rounded-lg">
+      <img class="w-5" src="/logos/react-native.png" alt="react-native" />
+      <p>React Native</p>
+    </div>
+    <div class="bgBlackBlur flex gap-2 items-center px-2 py-1 rounded-lg">
+      <img class="w-5" src="/logos/javascript.png" alt="javascript" />
+      <p>Javascript</p>
+    </div>
+  </footer>
+</section>
+-->

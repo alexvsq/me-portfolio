@@ -1,0 +1,16 @@
+---
+interface Props {
+  title: string;
+  srcImg: string;
+}
+const { title, srcImg } = Astro.props;
+---
+
+<section class="containerDynamic flex justify-between py-2">
+  <h3 class="text-primary text-2xl font-semibold">{title}</h3>
+  <aside class="flex">
+    <div class="bg-colorBg2 w-10 h-10 rounded-full">
+      <img class="w-full p-2" src={srcImg} alt="dev" />
+    </div>
+  </aside>
+</section>

@@ -1,0 +1,84 @@
+---
+import Subtitle from "../components/Subtitle.astro";
+import { hobbies, abilities } from "../../public/utils/aboutMe";
+---
+
+<section class="section-module" id="sobre-mi">
+  <Subtitle title="Sobre mi" srcImg="/icons/about.png" />
+  <div class="containerDynamic">
+    <header
+      class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-24 items-center my-10 md:my-20"
+    >
+      <div class="bg-colorBg2 rounded-2xl p-2 flex gap-4">
+        <img
+          class="rounded-2xl aspect-square object-cover w-[40%]"
+          src="/images/me-photo2.jpg"
+          alt="me"
+        />
+        <aside class="flex flex-col gap-1 text-white p-1 w-[60%]">
+          <div class="flex">
+            <p class="bg-black px-3 py-1 rounded-lg text-xs">23 años</p>
+          </div>
+          <h3 class="text-xl font-medium">
+            <p>Jose Alejandro</p><p>Vasquez Lezama</p>
+          </h3>
+          <p class="text-Text2 text-sm">Lima - Perú</p>
+        </aside>
+      </div>
+      <aside class="text-Text1 text-sm">
+        <div>
+          <p>
+            Soy diseñador gráfico de profesión y desarrollador JavaScript
+            freelance de Lima, Perú. Con una base sólida en herramientas como
+            Photoshop, Illustrator y Figma, combiné mi pasión por el diseño con
+            la programación, especializándome en desarrollo web y móvil con
+            tecnologías como React, Next.js y React Native.
+          </p>
+          <br />
+          <p>
+            Me destaco por mi creatividad, atención al detalle y capacidad para
+            gestionar proyectos de principio a fin, creando soluciones visuales
+            atractivas y funcionales. Disfruto de los retos que integran diseño
+            y desarrollo, siempre buscando aprender y aportar valor.
+          </p>
+        </div>
+      </aside>
+    </header>
+    <section>
+      <h3 class="text-white font-semibold my-10">Mis Habilidades</h3>
+      <section
+        class="text-sm text-white flex flex-wrap justify-between gap-8 md:py-10"
+      >
+        {
+          abilities?.map(({ title, description }) => (
+            <article class="pl-2">
+              <ul class="list-disc marker:text-primary list-outside">
+                <li class=" font-medium text-base text-Text1">{title}</li>
+              </ul>
+              <p class="text-Text2 max-w-[55ch] ">{description}</p>
+            </article>
+          ))
+        }
+      </section>
+    </section>
+    <footer>
+      <h3 class="text-white font-semibold my-10">Mis Pasatiempos</h3>
+      <section class="flex flex-wrap justify-center gap-20 text-Text1 py-20">
+        {
+          hobbies?.map(({ name, imgSrc }) => (
+            <article class="flex flex-col justify-center items-center gap-2">
+              <div class="h-[71px] w-[71px] bg-colorBg2 rounded-full p-4">
+                <img
+                  class="h-full w-full object-contain"
+                  src={`/icons/${imgSrc}`}
+                  alt={name}
+                />
+              </div>
+              <p class="text-Text1 text-sm">{name}</p>
+            </article>
+          ))
+        }
+      </section>
+    </footer>
+  </div>
+</section>
