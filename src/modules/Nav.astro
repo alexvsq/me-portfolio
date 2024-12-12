@@ -28,18 +28,15 @@ const btnsNav = [
   </div>
   <nav id="nav-btns-container" class="p-1 rounded-full">
     <div class="flex gap-3 text-white text-sm">
-      <p class="nav-btn rounded-full px-4 py-1 z-40">
-        <a href="#proyectos">Proyectos</a>
-      </p>
-      <p class="nav-btn rounded-full px-4 py-1 z-40">
-        <a href="#experiencias">Experiencias</a>
-      </p>
-      <p class="nav-btn rounded-full px-4 py-1 z-40">
-        <a href="#sobre-mi">Sobre mi</a>
-      </p>
-      <p class="nav-btn rounded-full px-4 py-1 z-40">
-        <a href="#contacto">Contacto</a>
-      </p>
+      {
+        btnsNav?.map((btn) => {
+          return (
+            <p class="nav-btn rounded-full px-4 py-1 z-40">
+              <a href={btn.link}>{btn.name}</a>
+            </p>
+          );
+        })
+      }
     </div>
   </nav>
 </div>

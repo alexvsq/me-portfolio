@@ -27,7 +27,7 @@ export const projectsList: ProjectType[] = [
     media: [
       {
         type: "img",
-        src: "/projects/coinapp-img.png",
+        src: "/projects/coinapp-img.webp",
       },
       {
         type: "video",
@@ -52,24 +52,24 @@ export const projectsList: ProjectType[] = [
     urls: [
       {
         name: "github",
-        url: "https://github.com/alexvsq/coin-app-v2",
+        url: "https://github.com/alexvsq/qr-manager",
       },
       {
         name: "playstore",
-        url: "https://play.google.com/store/apps/details?id=com.heinseng.coinappv2",
+        url: "https://play.google.com/store/apps/details?id=com.heinseng.qrmanager",
       },
     ],
     media: [
       {
         type: "img",
-        src: "/projects/qr-img.png",
+        src: "/projects/qr-img.webp",
       },
       {
         type: "video",
         src: "/projects/qr-video.mp4",
       },
     ],
-    tags: ["expo", "react-native", "typescript", "sqlite"],
+    tags: ["react-native", "typescript", "sqlite", "expo"],
   },
   {
     about: "Web App",
@@ -86,20 +86,20 @@ export const projectsList: ProjectType[] = [
     urls: [
       {
         name: "github",
-        url: "https://github.com/alexvsq/coin-app-v2",
+        url: "https://github.com/alexvsq/ai-code-translator",
       },
       {
-        name: "playstore",
-        url: "https://play.google.com/store/apps/details?id=com.heinseng.coinappv2",
+        name: "web",
+        url: "https://vocal-fenglisu-4b8c90.netlify.app/",
       },
     ],
     media: [
       {
         type: "img",
-        src: "/projects/aitranslator-img.png",
+        src: "/projects/aitranslator-img.webp",
       },
     ],
-    tags: ["next-js", "javascript"],
+    tags: ["next-js", "javascript", "tailwind"],
   },
   {
     about: "Web App",
@@ -117,20 +117,20 @@ export const projectsList: ProjectType[] = [
     urls: [
       {
         name: "github",
-        url: "https://github.com/alexvsq/coin-app-v2",
+        url: "https://github.com/alexvsq/todo-app",
       },
       {
-        name: "playstore",
-        url: "https://play.google.com/store/apps/details?id=com.heinseng.coinappv2",
+        name: "web",
+        url: "https://silly-daifuku-88388f.netlify.app/auth",
       },
     ],
     media: [
       {
         type: "img",
-        src: "/projects/todoapp-img.png",
+        src: "/projects/todoapp-img.webp",
       },
     ],
-    tags: ["react", "next-js", "javascript", "firebase"],
+    tags: ["next-js", "typescript", "firebase", "tailwind"],
   },
   {
     about: "Landing Page",
@@ -141,20 +141,20 @@ export const projectsList: ProjectType[] = [
     urls: [
       {
         name: "github",
-        url: "https://github.com/alexvsq/coin-app-v2",
+        url: "https://github.com/alexvsq/web-gym-demo",
       },
       {
-        name: "playstore",
-        url: "https://play.google.com/store/apps/details?id=com.heinseng.coinappv2",
+        name: "web",
+        url: "https://subtle-dolphin-d8a417.netlify.app/",
       },
     ],
     media: [
       {
         type: "img",
-        src: "/projects/gym-img.png",
+        src: "/projects/gym-img.webp",
       },
     ],
-    tags: ["react", "javascript"],
+    tags: ["react", "javascript", "vite"],
   },
   {
     about: "Web App",
@@ -171,20 +171,20 @@ export const projectsList: ProjectType[] = [
     urls: [
       {
         name: "github",
-        url: "https://github.com/alexvsq/coin-app-v2",
+        url: "https://github.com/alexvsq/book-list",
       },
       {
-        name: "playstore",
-        url: "https://play.google.com/store/apps/details?id=com.heinseng.coinappv2",
+        name: "web",
+        url: "https://courageous-duckanoo-60d5e2.netlify.app/",
       },
     ],
     media: [
       {
         type: "img",
-        src: "/projects/books-img.png",
+        src: "/projects/books-img.webp",
       },
     ],
-    tags: ["react", "javascript"],
+    tags: ["react", "javascript", "vite", "tailwind"],
   },
   {
     about: "Landing Page",
@@ -195,20 +195,20 @@ export const projectsList: ProjectType[] = [
     urls: [
       {
         name: "github",
-        url: "https://github.com/alexvsq/coin-app-v2",
+        url: "https://github.com/alexvsq/web-gym-demo",
       },
       {
-        name: "playstore",
-        url: "https://play.google.com/store/apps/details?id=com.heinseng.coinappv2",
+        name: "web",
+        url: "https://subtle-dolphin-d8a417.netlify.app/",
       },
     ],
     media: [
       {
         type: "img",
-        src: "/projects/gym-img.png",
+        src: "/projects/gym-img.webp",
       },
     ],
-    tags: ["react", "javascript"],
+    tags: ["react", "javascript", "vite"],
   },
   {
     about: "Landing Page",
@@ -225,19 +225,19 @@ export const projectsList: ProjectType[] = [
     urls: [
       {
         name: "github",
-        url: "https://github.com/alexvsq/coin-app-v2",
+        url: "https://github.com/alexvsq/me-portfolio",
       },
       {
-        name: "playstore",
-        url: "https://play.google.com/store/apps/details?id=com.heinseng.coinappv2",
+        name: "web",
+        url: "https://spectacular-sable-7fbc9e.netlify.app/",
       },
     ],
     media: [
       {
         type: "img",
-        src: "/projects/portafolio-img.png",
+        src: "/projects/portafolio-img.webp",
       },
     ],
-    tags: ["astro", "typescript"],
+    tags: ["astro", "typescript", "tailwind"],
   },
 ];
