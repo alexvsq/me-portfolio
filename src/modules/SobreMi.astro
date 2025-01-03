@@ -44,8 +44,8 @@ import { hobbies, abilities } from "../utils/aboutMe";
         </div>
       </aside>
     </header>
-    <section>
-      <h3 class="text-white font-semibold my-10">Mis Habilidades</h3>
+    <section class="my-14">
+      <h3 class="text-white font-semibold mt-10 text-lg">Mis Habilidades</h3>
       <section
         class="text-sm text-white flex flex-wrap justify-between gap-8 md:py-10"
       >
@@ -62,19 +62,19 @@ import { hobbies, abilities } from "../utils/aboutMe";
       </section>
     </section>
     <footer>
-      <h3 class="text-white font-semibold my-10">Mis Pasatiempos</h3>
+      <h3 class="text-white font-semibold mt-10 text-lg">Mis Pasatiempos</h3>
       <section class="flex flex-wrap justify-center gap-20 text-Text1 py-20">
         {
           hobbies?.map(({ name, imgSrc }) => (
             <article class="flex flex-col justify-center items-center gap-2">
-              <div class="h-[71px] w-[71px] bg-colorBg2 rounded-full p-4">
+              <div class="h-[71px] w-[71px] bgBlackBlur rounded-full p-4">
                 <img
                   class="h-full w-full object-contain"
                   src={`/icons/${imgSrc}`}
                   alt={name}
                 />
               </div>
-              <p class="text-Text1 text-sm">{name}</p>
+              <p class="text-Text1 font-semibold text-sm">{name}</p>
             </article>
           ))
         }

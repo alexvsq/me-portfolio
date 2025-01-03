@@ -31,7 +31,7 @@ const btnsNav = [
       {
         btnsNav?.map((btn) => {
           return (
-            <p class="nav-btn rounded-full px-4 py-1 z-40 hover:text-primary">
+            <p class="nav-btn rounded-full px-5 py-1 z-40 hover:text-primary">
               <a href={btn.link}>{btn.name}</a>
             </p>
           );
@@ -40,6 +40,7 @@ const btnsNav = [
     </div>
   </nav>
 </div>
+<!-- NAV MOBILE -->
 <div class="fixed md:hidden pt-4 w-full z-10">
   <nav class="flex justify-between items-center containerDynamic">
     <div id="btn-next-section" class="w-10 h-10 bgBlackBlur p-2 rounded-full">

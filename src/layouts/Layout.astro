@@ -1,5 +1,10 @@
 ---
-import "@fontsource/poppins";
+import "@fontsource/poppins/300.css";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
+import "@fontsource/poppins/800.css";
 ---
 
 <!doctype html>
@@ -8,8 +13,14 @@ import "@fontsource/poppins";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨🏻‍💻</text></svg>"
+    />
+
     <meta name="generator" content={Astro.generator} />
-    <title>Portafolio</title>
+    <title>Portafolio - Ale</title>
   </head>
   <body>
     <slot />
@@ -23,7 +34,7 @@ import "@fontsource/poppins";
     background-image: url("/images/pattern-bg.webp");
     background-blend-mode: multiply;
     background-attachment: fixed;
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
     scroll-behavior: smooth;
   }
   .containerDynamic {

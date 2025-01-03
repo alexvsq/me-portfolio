@@ -29,7 +29,7 @@ const cardsContact = [
       class="flex flex-col md:flex-row gap-10 md:gap-0 justify-around items-center"
     >
       <div>
-        <article class="text-2xl text-white font-bold">
+        <article class="text-2xl text-white font-semibold">
           <p>Jose Alejandro</p><p>Vasquez Lezama</p>
         </article>
       </div>
@@ -37,7 +37,7 @@ const cardsContact = [
         {
           cardsContact.map((card) => (
             <a href={card.url}>
-              <article class="flex flex-col gap-6 bg-colorBg2 rounded-2xl p-4">
+              <article class="flex flex-col gap-6 bg-colorBg2 border border-stroke rounded-2xl p-4">
                 <header class="flex justify-between items-center">
                   <p class="text-Text2 text-xs">{card.name}</p>
                   <aside class="bg-colorBg p-[6px] rounded-full w-8 h-8">
