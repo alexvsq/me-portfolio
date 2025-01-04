@@ -134,27 +134,27 @@ export const projectsList: ProjectType[] = [
   },
   {
     about: "Landing Page",
-    name: "Matrix Gym",
+    name: "Tecmasoft",
     description: "Landing page de un gimansio, diseñado para una tarea",
 
     abilities: ["Diseño Web", "Responsive"],
     urls: [
       {
         name: "github",
-        url: "https://github.com/alexvsq/web-gym-demo",
+        url: "https://github.com/alexvsq/web-tecmasoft.git",
       },
       {
         name: "web",
-        url: "https://subtle-dolphin-d8a417.netlify.app/",
+        url: "https://12es1d1d2xw.netlify.app/",
       },
     ],
     media: [
       {
         type: "img",
-        src: "/projects/gym-img.webp",
+        src: "/projects/tecmasoft-img.webp",
       },
     ],
-    tags: ["react", "javascript", "vite"],
+    tags: ["astro", "react", "tailwind", "javascript"],
   },
   {
     about: "Web App",
@@ -189,7 +189,7 @@ export const projectsList: ProjectType[] = [
   {
     about: "Landing Page",
     name: "Matrix Gym",
-    description: "Landing page de un gimansio, diseñado para una tarea.",
+    description: "Landing page para un gimnasio, diseñado para una tarea.",
 
     abilities: ["Diseño Web", "Responsive"],
     urls: [

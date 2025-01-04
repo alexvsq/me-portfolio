@@ -7,7 +7,9 @@ import type { ProjectType } from "../types/types";
 
 <section class="section-module" id="proyectos">
   <Subtitle title="Proyectos" srcImg="/icons/dev.png" />
-  <div class="containerDynamic2 flex flex-wrap justify-between items-center">
+  <div
+    class="containerDynamic2 flex flex-wrap justify-between items-center py-10"
+  >
     {
       projectsList.map((project: ProjectType) => {
         return <CardProyecto {...project} />;

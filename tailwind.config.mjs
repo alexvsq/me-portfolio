@@ -11,7 +11,7 @@ export default {
 			Text2: '#A8A8A8',
 			colorBg: '#1A1C29',
 			colorBg2: '#272A3D',
-			stroke: '#232531'
+			stroke: '#2A2C3A'
 		},
 		extend: {},
 	},
