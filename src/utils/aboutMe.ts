@@ -1,4 +1,4 @@
-export const hobbies = [
+export const hobbiesSpanish = [
   {
     name: "Videojuegos",
     imgSrc: "game.png",
@@ -21,7 +21,30 @@ export const hobbies = [
   },
 ];
 
-export const abilities = [
+export const hobbiesEnglish = [
+  {
+    name: "Video Games",
+    imgSrc: "game.png",
+  },
+  {
+    name: "Music",
+    imgSrc: "music.png",
+  },
+  {
+    name: "Movies",
+    imgSrc: "movie.png",
+  },
+  {
+    name: "Traveling",
+    imgSrc: "travel.png",
+  },
+  {
+    name: "Reading",
+    imgSrc: "book.png",
+  },
+];
+
+export const abilitiesSpanish = [
   {
     title: "Desarrollo Frontend con React y Ecosistema JavaScript.",
     description:
@@ -51,5 +74,38 @@ export const abilities = [
     title: "Control de Versiones y Colaboración.",
     description:
       "Utilicé Git y GitHub para gestionar proyectos, colaborar con equipos y mantener un flujo de trabajo organizado y eficiente.",
+  },
+];
+
+export const abilitiesEnglish = [
+  {
+    title: "Frontend Development with React and JavaScript Ecosystem",
+    description:
+      "I have built dynamic and responsive web interfaces using React and frameworks like Next.js and Vite, prioritizing optimized and modern user experiences.",
+  },
+  {
+    title: "Mobile Application Development",
+    description:
+      "I have developed cross-platform mobile applications with React Native and Expo, integrating real-time databases such as Firebase and Supabase for advanced functionalities.",
+  },
+  {
+    title: "Graphic Design and Branding",
+    description:
+      "I designed and executed visual campaigns for key brands, ensuring consistent visual identities and achieving increased visibility.",
+  },
+  {
+    title: "Database Management and Optimization",
+    description:
+      "I implemented and managed relational databases like MySQL and SQLite, as well as non-relational databases like MongoDB, for high-performance applications.",
+  },
+  {
+    title: "Graphic Design Skills",
+    description:
+      "Professional design experience with Adobe Photoshop and Illustrator, and creation of interfaces and interactive prototypes in Figma, ensuring effective communication between design and development.",
+  },
+  {
+    title: "Version Control and Collaboration",
+    description:
+      "I used Git and GitHub to manage projects, collaborate with teams, and maintain an organized and efficient workflow.",
   },
 ];

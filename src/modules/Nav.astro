@@ -1,45 +1,52 @@
 ---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const btnsNav = [
   {
-    name: "Proyectos",
-    link: "#proyectos",
+    name: t("nav.projects"),
+    link: "proyectos",
   },
   {
-    name: "Experiencias",
-    link: "#experiencias",
+    name: t("nav.experiences"),
+    link: "experiencias",
   },
   {
-    name: "Sobre mi",
-    link: "#sobre-mi",
+    name: t("nav.aboutMe"),
+    link: "sobre-mi",
   },
   {
-    name: "Contacto",
-    link: "#contacto",
+    name: t("nav.contact"),
+    link: "contacto",
   },
 ];
 ---
 
 <div class="hidden md:fixed w-full md:flex justify-center py-2 z-20">
-  <div id="bg-nav" class="bgBlackBlur rounded-full absolute"></div>
-  <div
-    id="btn-bg"
-    class="fixed transition-all ease-in-out w-[var(--width)] h-[var(--height)] left-[var(--left)] top-[var(--top)] bg-colorBg2 rounded-full"
-  >
-  </div>
-  <nav id="nav-btns-container" class="p-1 rounded-full">
-    <div class="flex gap-3 text-white text-sm">
-      {
-        btnsNav?.map((btn) => {
-          return (
-            <p class="nav-btn rounded-full px-5 py-1 z-40 hover:text-primary">
-              <a href={btn.link}>{btn.name}</a>
-            </p>
-          );
-        })
-      }
+  <div>
+    <div id="bg-nav" class="bgBlackBlur rounded-full absolute"></div>
+    <div
+      id="btn-bg"
+      class="fixed transition-all ease-in-out w-[var(--width)] h-[var(--height)] left-[var(--left)] top-[var(--top)] bg-colorBg2 rounded-full"
+    >
     </div>
-  </nav>
+    <nav id="nav-btns-container" class="p-1 rounded-full">
+      <div class="flex gap-3 text-white text-sm">
+        {
+          btnsNav?.map((btn) => {
+            return (
+              <p class="nav-btn rounded-full px-5 py-1 z-40 hover:text-primary">
+                <a href={`#${btn.link}`}>{btn.name}</a>
+              </p>
+            );
+          })
+        }
+      </div>
+    </nav>
+  </div>
 </div>
+
 <!-- NAV MOBILE -->
 <div class="fixed md:hidden pt-4 w-full z-10">
   <nav class="flex justify-between items-center containerDynamic">
@@ -58,51 +65,25 @@ const btnsNav = [
   </nav>
 </div>
 
-<script>
-  const btnsNav = [
-    {
-      name: "Home",
-      link: "home",
-    },
-    {
-      name: "Proyectos",
-      link: "proyectos",
-    },
-    {
-      name: "Experiencias",
-      link: "experiencias",
-    },
-    {
-      name: "Sobre mi",
-      link: "sobre-mi",
-    },
-    {
-      name: "Contacto",
-      link: "contacto",
-    },
-  ];
+<script define:vars={{ btnsNav }}>
   document.addEventListener("DOMContentLoaded", () => {
     const navBtns = document.querySelectorAll(".nav-btn");
-    const btnBg = document.querySelector("#btn-bg") as HTMLElement;
+    const btnBg = document.querySelector("#btn-bg");
     const sections = document.querySelectorAll(".section-module");
-    const bgNav = document.querySelector("#bg-nav") as HTMLElement;
-    const navContainer = document.querySelector(
-      "#nav-btns-container"
-    ) as HTMLElement;
+    const bgNav = document.querySelector("#bg-nav");
+    const navContainer = document.querySelector("#nav-btns-container");
     const mobileSectionIndicator = document.querySelector(
       "#mobile-section-indicator"
-    ) as HTMLElement;
+    );
 
-    const optionsObserver = { threshold: 0.2 };
-
-    if (window.innerWidth < 768) {
-      optionsObserver.threshold = 0.1;
-    }
+    const optionsObserver = { threshold: window.innerWidth < 768 ? 0.1 : 0.2 };
 
     const updateNavBgSize = () => {
-      const navContainerSizes = navContainer.getBoundingClientRect();
-      bgNav.style.width = `${navContainerSizes.width}px`;
-      bgNav.style.height = `${navContainerSizes.height}px`;
+      if (bgNav && navContainer) {
+        const navContainerSizes = navContainer.getBoundingClientRect();
+        bgNav.style.width = `${navContainerSizes.width}px`;
+        bgNav.style.height = `${navContainerSizes.height}px`;
+      }
     };
 
     updateNavBgSize();
@@ -120,37 +101,52 @@ const btnsNav = [
               const { left, top, width, height } =
                 btnBtn.getBoundingClientRect();
 
-              btnBg.style.setProperty("--left", `${left}px`);
-              btnBg.style.setProperty("--top", `${top}px`);
-              btnBg.style.setProperty("--width", `${width}px`);
-              btnBg.style.setProperty("--height", `${height}px`);
+              if (btnBg) {
+                btnBg.style.setProperty("--left", `${left}px`);
+                btnBg.style.setProperty("--top", `${top}px`);
+                btnBg.style.setProperty("--width", `${width}px`);
+                btnBg.style.setProperty("--height", `${height}px`);
+              }
 
               const objSectionCurrent = btnsNav.find(
                 (x) => x.link == entry.target.id
               );
-              mobileSectionIndicator.getElementsByTagName("p")[0].innerText =
-                objSectionCurrent ? objSectionCurrent.name : "";
 
-              mobileSectionIndicator.classList.remove("element-inactive");
+              if (mobileSectionIndicator) {
+                const indicator = mobileSectionIndicator.querySelector("p");
+                if (indicator) {
+                  indicator.innerText = objSectionCurrent
+                    ? objSectionCurrent.name
+                    : "";
+                }
+                mobileSectionIndicator.classList.remove("element-inactive");
+              }
 
               btnBtn.classList.add("text-active");
-
               updateNavBgSize();
             } else if (entry.target.id == "home") {
-              btnBg.style.setProperty("--left", `${0}px`);
-              btnBg.style.setProperty("--top", `${0}px`);
-              btnBg.style.setProperty("--width", `${0}px`);
-              btnBg.style.setProperty("--height", `${0}px`);
+              if (btnBg) {
+                btnBg.style.setProperty("--left", "0px");
+                btnBg.style.setProperty("--top", "0px");
+                btnBg.style.setProperty("--width", "0px");
+                btnBg.style.setProperty("--height", "0px");
+              }
 
               const objSectionCurrent = btnsNav.find(
                 (x) => x.link == entry.target.id
               );
 
-              mobileSectionIndicator.getElementsByTagName("p")[0].innerText =
-                objSectionCurrent ? objSectionCurrent.name : "";
+              if (mobileSectionIndicator) {
+                const indicator = mobileSectionIndicator.querySelector("p");
+                if (indicator) {
+                  indicator.innerText = objSectionCurrent
+                    ? objSectionCurrent.name
+                    : "";
+                }
+                mobileSectionIndicator.classList.add("element-inactive");
+              }
 
               btnBtn.classList.remove("text-active");
-              mobileSectionIndicator.classList.add("element-inactive");
             } else {
               btnBtn.classList.remove("text-active");
             }
@@ -163,25 +159,25 @@ const btnsNav = [
       observer.observe(section);
     });
 
-    const btnNextSection = document.querySelector(
-      "#btn-next-section"
-    ) as HTMLElement;
+    const btnNextSection = document.querySelector("#btn-next-section");
+    if (btnNextSection && mobileSectionIndicator) {
+      btnNextSection.addEventListener("click", () => {
+        const indicator = mobileSectionIndicator.querySelector("p");
+        if (indicator) {
+          const currentSection = indicator.innerText;
+          const currentSectionIndex = btnsNav.findIndex(
+            (x) => x.name === currentSection
+          );
+          const lastIndex = btnsNav.length - 1;
 
-    btnNextSection.addEventListener("click", () => {
-      const currentSection =
-        mobileSectionIndicator.getElementsByTagName("p")[0].innerText;
-
-      const currentSectionIndex = btnsNav.findIndex(
-        (x) => x.name === currentSection
-      );
-      const lastIndex = btnsNav.length - 1;
-
-      if (currentSectionIndex < lastIndex) {
-        window.location.href = "#" + btnsNav[currentSectionIndex + 1].link;
-      } else {
-        window.location.href = "#home";
-      }
-    });
+          if (currentSectionIndex < lastIndex) {
+            window.location.href = "#" + btnsNav[currentSectionIndex + 1].link;
+          } else {
+            window.location.href = "#home";
+          }
+        }
+      });
+    }
   });
 </script>
 

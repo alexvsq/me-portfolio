@@ -1,12 +1,17 @@
 ---
-import Subtitle from "../components/Subtitle.astro";
-import CardProyecto from "../components/CardProyecto.astro";
-import { projectsList } from "../utils/projects";
-import type { ProjectType } from "../types/types";
+import Subtitle from "@/components/Subtitle.astro";
+import CardProyecto from "@/components/CardProyecto.astro";
+import { projectsListSpanish, projectsListEnglish } from "@/utils/projects";
+import type { ProjectType } from "@/types/types";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const projectsList = lang === "en" ? projectsListEnglish : projectsListSpanish;
 ---
 
 <section class="section-module" id="proyectos">
-  <Subtitle title="Proyectos" srcImg="/icons/dev.png" />
+  <Subtitle title={t("projects.title")} srcImg="/icons/dev.png" />
   <div
     class="containerDynamic2 flex flex-wrap justify-between items-center py-10"
   >

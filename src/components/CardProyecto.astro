@@ -1,7 +1,7 @@
 ---
 import type { ProjectType } from "../../src/types/types";
-const { about, name, description, abilities, urls, media, tags, project } =
-  Astro.props;
+import { getLogo } from "@/utils/getLogos";
+const project = Astro.props as ProjectType;
 ---
 
 <section
@@ -15,17 +15,17 @@ const { about, name, description, abilities, urls, media, tags, project } =
     >
       <div class="rounded-lg overflow-hidden flex w-full h-full">
         {
-          Array.isArray(media) && media.length === 1 ? (
-            media[0].type === "img" ? (
+          Array.isArray(project.media) && project.media.length === 1 ? (
+            project.media[0].type === "img" ? (
               <img
                 class="w-full mx-auto h-full object-contain content-center"
-                src={media[0].src}
-                alt={media[0].type}
+                src={project.media[0].src}
+                alt={project.media[0].type}
               />
             ) : (
               <video
                 class="h-full w-full object-cover"
-                src={media[0].src}
+                src={project.media[0].src}
                 autoplay
                 loop
                 muted
@@ -35,8 +35,8 @@ const { about, name, description, abilities, urls, media, tags, project } =
               </video>
             )
           ) : (
-            Array.isArray(media) &&
-            media.map((item) => (
+            Array.isArray(project.media) &&
+            project.media.map((item) => (
               <div class=" h-full w-1/2 aspect-[9/16]">
                 {item.type === "img" ? (
                   <img
@@ -66,12 +66,12 @@ const { about, name, description, abilities, urls, media, tags, project } =
     <div class="w-full md:w-[47%] flex flex-col px-2 h-full">
       <header class="flex items-center justify-between">
         <p class="bg-colorBg text-white px-3 py-1 text-[10px] rounded-md">
-          {about}
+          {project.about}
         </p>
 
         <aside class="flex items-center gap-3">
           {
-            urls?.map((item: any) => {
+            project.urls?.map((item) => {
               return (
                 <a href={item.url} target="_blank" rel="noreferrer">
                   <div class="bg-colorBg rounded-full p-[6px] h-8 w-8">
@@ -92,16 +92,20 @@ const { about, name, description, abilities, urls, media, tags, project } =
       </header>
       <article class="flex flex-col justify-between h-full font-medium">
         <header class="flex flex-col h-full gap-2 mt-1">
-          <h3 class="text-white text-lg font-semibold">{name}</h3>
+          <h3 class="text-white text-lg font-semibold">{project.name}</h3>
 
           <p class="text-Text1 text-[13px]">
-            {description}
+            {project.description}
           </p>
 
           <ul
             class="text-Text2 text-[13px] list-disc marker:text-primary list-inside"
           >
-            {abilities?.map((abilities: string) => <li>{abilities}</li>)}
+            {
+              project.abilities?.map((abilities: string) => (
+                <li>{abilities}</li>
+              ))
+            }
           </ul>
         </header>
       </article>
@@ -111,16 +115,42 @@ const { about, name, description, abilities, urls, media, tags, project } =
     class="md:absolute bottom-2 pl-1 flex flex-wrap gap-2 text-white text-xs font-normal items-center"
   >
     {
-      tags?.map((tag: string) => (
-        <div class="bgBlackBlur flex items-center px-2 py-1 rounded-lg gap-2">
-          <img
-            class="w-4 h-4 object-contain"
-            src={`/logos/${tag}.png`}
-            alt={tag}
-          />
-          <p class=" capitalize">{tag}</p>
-        </div>
-      ))
+      project.tags?.map((tag: string) => {
+        return (
+          <div class="bgBlackBlur flex items-center px-2 py-1 rounded-lg gap-2">
+            <img
+              class="w-4 h-4 object-contain"
+              src={`/logos/${tag}.png`}
+              alt={tag}
+            />
+            <p class="">{getLogo(tag)?.name}</p>
+          </div>
+        );
+      })
     }
   </footer>
 </section>
+
+<style>
+  /* 
+   @keyframes show {
+    from {
+      opacity: 0;
+      scale: 10%;
+    }
+    to {
+      opacity: 1;
+      scale: 100%;
+    }
+  }
+
+  .animation-to-show {
+    view-timeline-name: --reveal;
+
+    animation-name: show;
+    animation-fill-mode: both;
+
+    animation-timeline: --reveal;
+    animation-range: entry 25% cover 50%;
+  } */
+</style>

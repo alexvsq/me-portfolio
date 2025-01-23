@@ -1,5 +1,9 @@
 ---
 import Subtitle from "../components/Subtitle.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const cardsContact = [
   {
     name: "Github",
@@ -23,7 +27,7 @@ const cardsContact = [
 ---
 
 <section class="section-module" id="contacto">
-  <Subtitle title="Contacto" srcImg="/icons/contact.png" />
+  <Subtitle title={t("contact.title")} srcImg="/icons/contact.png" />
   <div class="containerDynamic py-12">
     <div
       class="flex flex-col md:flex-row gap-10 md:gap-0 justify-around items-center"

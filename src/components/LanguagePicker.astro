@@ -1,0 +1,60 @@
+---
+import { languages } from "@/i18n/ui";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const langSelected = getLangFromUrl(Astro.url);
+const t = useTranslations(langSelected);
+---
+
+<nav id="btn-languages-picker" class="bgBlackBlur cursor-pointer rounded-full">
+  <div class="flex gap-2 py-2 px-3">
+    <img
+      class="w-5 object-contain mx-1"
+      src="/icons/translate.png"
+      alt="translate"
+    />
+    <img
+      class="w-8 object-contain"
+      src="/icons/arrow-white.png"
+      alt="arrow-white"
+    />
+  </div>
+</nav>
+
+<footer
+  id="languages-picker"
+  class="hidden bgBlackBlur rounded-xl px-3 py-2 flex flex-col gap-2 mt-1"
+>
+  <ul>
+    {
+      Object.entries(languages).map(([lang, label]) => (
+        <a href={`/${lang}/`}>
+          <li
+            class={`text-xs flex items-center gap-2 my-1 ${lang == langSelected ? "text-primary" : " text-white"}`}
+          >
+            <img
+              class=" w-6 object-contain"
+              src={`/icons/${lang}.png`}
+              alt={lang}
+            />
+
+            <p class=" uppercase">{lang}</p>
+          </li>
+        </a>
+      ))
+    }
+  </ul>
+</footer>
+
+<script>
+  const btnLanguagesPicker = document.querySelector(
+    "#btn-languages-picker"
+  ) as HTMLElement;
+  const languagesPicker = document.querySelector(
+    "#languages-picker"
+  ) as HTMLElement;
+
+  btnLanguagesPicker.addEventListener("click", () => {
+    languagesPicker.classList.toggle("hidden");
+  });
+</script>

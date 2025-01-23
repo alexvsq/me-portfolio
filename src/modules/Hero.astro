@@ -1,10 +1,22 @@
+---
+import LanguagePicker from "@/components/LanguagePicker.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<aside class="absolute top-4 md:top-2 right-4 z-20">
+  <LanguagePicker />
+</aside>
+
 <header
   id="home"
   class="section-module relative h-screen containerDynamic flex flex-col justify-center md:flex-row-reverse md:justify-between items-center mx-auto"
 >
   <div class="absolute bottom-5 w-full flex justify-center">
     <p class="bgBlackBlur py-1 px-5 text-white rounded-full animate-bounce">
-      Más 👇
+      {t("hero.moreContent")} 👇
     </p>
   </div>
 
@@ -21,7 +33,7 @@
     <footer class="flex justify-center items-center">
       <div class="flex gap-1 bg-colorBg2 py-1 px-3 rounded-xl">
         <img class="w-5" src="/icons/place.png" alt="place" />
-        <p class="text-white text-sm">Lima - Perú</p>
+        <p class="text-white text-sm">{t("hero.mePlace")}</p>
       </div>
     </footer>
   </aside>
@@ -29,24 +41,23 @@
   <div class="flex flex-col gap-5">
     <article class="text-3xl md:text-4xl font-bold">
       <p class="text-xl font-medium text-Text2 my-1">
-        Hola mi nombre es <span class="text-white">Alex</span>
+        {t("hero.presentation")}
+        <span class="text-white">Alex</span>
       </p>
-      <p class="text-white">Y soy Desarrollador</p>
-      <p class="text-primary">Javascript Fullstack</p>
+      <p class="text-white">{t("hero.title1")}</p>
+      <p class="text-primary">{t("hero.title2")}</p>
     </article>
     <article class="text-Text1 text-sm max-w-[45ch]">
       <p>
-        Soy desarrollador y diseñador gráfico freelance. Comencé a programar
-        como un hobby, y ahora se ha convertido en mi trabajo.
+        {t("hero.description1")}
       </p>
       <p>
-        Me especializo en JavaScript enfocandome en React así como algunos de
-        sus frameworks y bibliotecas
+        {t("hero.description2")}
       </p>
     </article>
     <article>
       <h3 class="text-white text-lg font-semibold my-1">
-        Skills y Stack Principal.
+        {t("hero.skillsTitle")}
       </h3>
       <ul class="text-Text1 text-sm list-disc marker:text-primary list-inside">
         <li>React, Typescript , React Native , NodeJs.</li>

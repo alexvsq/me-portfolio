@@ -1,10 +1,21 @@
 ---
-import Subtitle from "../components/Subtitle.astro";
-import { hobbies, abilities } from "../utils/aboutMe";
+import Subtitle from "@/components/Subtitle.astro";
+import {
+  hobbiesEnglish,
+  hobbiesSpanish,
+  abilitiesEnglish,
+  abilitiesSpanish,
+} from "../utils/aboutMe";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const abilities = lang === "en" ? abilitiesEnglish : abilitiesSpanish;
+const hobbies = lang === "en" ? hobbiesEnglish : hobbiesSpanish;
 ---
 
 <section class="section-module" id="sobre-mi">
-  <Subtitle title="Sobre mi" srcImg="/icons/about.png" />
+  <Subtitle title={t("aboutMe.title")} srcImg="/icons/about.png" />
   <div class="containerDynamic">
     <header
       class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-24 items-center my-10 md:my-20"
@@ -17,35 +28,32 @@ import { hobbies, abilities } from "../utils/aboutMe";
         />
         <aside class="flex flex-col gap-1 text-white p-1 w-[60%]">
           <div class="flex">
-            <p class="bg-black px-3 py-1 rounded-lg text-xs">23 años</p>
+            <p class="bg-black px-3 py-1 rounded-lg text-xs">
+              {t("aboutMe.meAge")}
+            </p>
           </div>
           <h3 class="text-xl font-medium">
             <p>Jose Alejandro</p><p>Vasquez Lezama</p>
           </h3>
-          <p class="text-Text2 text-sm">Lima - Perú</p>
+          <p class="text-Text2 text-sm">{t("hero.mePlace")}</p>
         </aside>
       </div>
       <aside class="text-Text1 text-sm">
         <div>
           <p>
-            Soy diseñador gráfico de profesión y desarrollador JavaScript
-            freelance de Lima, Perú. Con una base sólida en herramientas como
-            Photoshop, Illustrator y Figma, combiné mi pasión por el diseño con
-            la programación, especializándome en desarrollo web y móvil con
-            tecnologías como React, Next.js y React Native.
+            {t("aboutMe.paragraph1")}
           </p>
           <br />
           <p>
-            Me destaco por mi creatividad, atención al detalle y capacidad para
-            gestionar proyectos de principio a fin, creando soluciones visuales
-            atractivas y funcionales. Disfruto de los retos que integran diseño
-            y desarrollo, siempre buscando aprender y aportar valor.
+            {t("aboutMe.paragraph2")}
           </p>
         </div>
       </aside>
     </header>
     <section class="my-14">
-      <h3 class="text-white font-semibold mt-10 text-lg">Mis Habilidades</h3>
+      <h3 class="text-white font-semibold mt-10 text-lg">
+        {t("aboutMe.meSkills")}
+      </h3>
       <section
         class="text-sm text-white flex flex-wrap justify-between gap-8 py-5 md:py-10"
       >
@@ -62,7 +70,9 @@ import { hobbies, abilities } from "../utils/aboutMe";
       </section>
     </section>
     <footer>
-      <h3 class="text-white font-semibold mt-10 text-lg">Mis Pasatiempos</h3>
+      <h3 class="text-white font-semibold mt-10 text-lg">
+        {t("aboutMe.meHabits")}
+      </h3>
       <section class="flex flex-wrap justify-center gap-20 text-Text1 py-20">
         {
           hobbies?.map(({ name, imgSrc }) => (
