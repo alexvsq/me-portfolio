@@ -47,7 +47,7 @@ export const projectsListSpanish: ProjectType[] = [
     urls: [
       {
         name: "github",
-        url: "https://github.com/alexvsq/qr-manager",
+        url: "https://github.com/alexvsq/qr-manager2",
       },
       {
         name: "playstore",
@@ -296,7 +296,7 @@ export const projectsListEnglish: ProjectType[] = [
     urls: [
       {
         name: "github",
-        url: "https://github.com/alexvsq/qr-manager",
+        url: "https://github.com/alexvsq/qr-manager2",
       },
       {
         name: "playstore",
