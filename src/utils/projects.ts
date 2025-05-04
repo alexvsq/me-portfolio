@@ -128,24 +128,24 @@ export const projectsListSpanish: ProjectType[] = [
   },
   {
     about: "Web App",
-    name: "Todo App - Firebase",
+    name: "Todo App - Supabase",
     description:
-      "Aplicación web para gestionar tareas con Firebase, con inicio de sesión mediante Google, búsqueda y gestión de estados de tareas.",
+      "Aplicación web para gestionar tareas con Supabase, con inicio de sesión mediante Google, búsqueda y gestión de estados de tareas.",
 
     abilities: [
-      "Uso de Firebase Database",
+      "Uso de Supabase Database",
       "Operaciones C.R.U.D",
       "Rutas protegidas para seguridad",
-      "Firebase Authentication y login con proveedores",
+      "Auth.js Authentication y login con proveedores",
     ],
     urls: [
       {
         name: "github",
-        url: "https://github.com/alexvsq/todo-app",
+        url: "https://github.com/alexvsq/todo-web.git",
       },
       {
         name: "web",
-        url: "https://silly-daifuku-88388f.netlify.app/auth",
+        url: "https://illustrious-unicorn-003240.netlify.app",
       },
     ],
     media: [
@@ -154,7 +154,7 @@ export const projectsListSpanish: ProjectType[] = [
         src: "/projects/todoapp-img.webp",
       },
     ],
-    tags: ["nextjs", "typescript", "firebase", "tailwind"],
+    tags: ["nextjs", "typescript", "supabase", "tailwind"],
   },
   {
     about: "Landing Page",
@@ -377,24 +377,24 @@ export const projectsListEnglish: ProjectType[] = [
   },
   {
     about: "Web App",
-    name: "Todo App - Firebase",
+    name: "Todo App - Supabase",
     description:
-      "Web application for task management with Firebase, with Google login, search, and task status management.",
+      "Web application for task management with Supabase, with Google login, search, and task status management.",
 
     abilities: [
-      "Firebase Database usage",
+      "Supabase Database usage",
       "C.R.U.D operations",
       "Protected routes for security",
-      "Firebase Authentication and login with providers",
+      "Auth.js Authentication and login with providers",
     ],
     urls: [
       {
         name: "github",
-        url: "https://github.com/alexvsq/todo-app",
+        url: "https://github.com/alexvsq/todo-web.git",
       },
       {
         name: "web",
-        url: "https://silly-daifuku-88388f.netlify.app/auth",
+        url: "https://illustrious-unicorn-003240.netlify.app/",
       },
     ],
     media: [
@@ -403,7 +403,7 @@ export const projectsListEnglish: ProjectType[] = [
         src: "/projects/todoapp-img.webp",
       },
     ],
-    tags: ["nextjs", "typescript", "firebase", "tailwind"],
+    tags: ["nextjs", "typescript", "supabase", "tailwind"],
   },
   {
     about: "Landing Page",
