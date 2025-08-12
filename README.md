@@ -5,7 +5,8 @@ Personal portfolio with interactive animations, designed and programmed by me, u
 
 ### Links 
 [Link to Web](https://spectacular-sable-7fbc9e.netlify.app/)
-[New Version to Portfolio!](https://portfolio-six-sooty-75.vercel.app/en/)
+
+[New Version Portfolio!](https://portfolio-six-sooty-75.vercel.app/en/)
 
 ### Tech Stack
 * Astro
